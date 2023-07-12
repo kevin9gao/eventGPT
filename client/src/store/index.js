@@ -5,9 +5,10 @@ import {
   compose
 } from 'redux';
 import thunk from 'redux-thunk';
+import sessionReducer from './session';
 
 const rootReducer = combineReducers({
-  // todo
+  session: sessionReducer,
 });
 
 let enhancer;
