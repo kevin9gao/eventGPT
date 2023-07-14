@@ -1,0 +1,26 @@
+{
+  "name": "eventgpt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "heroku-postbuild": "npm run build --prefix client",
+    "install": "npm --prefix app install app && npm --prefix client install client",
+    "dev:app": "npm install --prefix app start",
+    "dev:client": "npm install --prefix client start",
+    "sequelize": "npm run --prefix app sequelize",
+    "sequelize-cli": "npm run --prefix app sequelize-cli",
+    "start": "npm start --prefix app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevin9gao/eventGPT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevin9gao/eventGPT/issues"
+  },
+  "homepage": "https://github.com/kevin9gao/eventGPT#readme"
+}
