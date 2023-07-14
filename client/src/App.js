@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from './store/session';
 import SignupForm from './components/Auth/SignupForm';
 import Navbar from './components/Navigation/Navbar';
+import SplashPage from './components/SplashPage';
+import HomePage from './components/Home/HomePage';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +24,8 @@ function App() {
         <Routes>
           <Route path='/login' element={<LoginForm />} />
           <Route path='/signup' element={<SignupForm />} />
+          <Route path='/home' element={<HomePage />} />
+          <Route path='/' element={<SplashPage />} />
         </Routes>
       )}
     </>
