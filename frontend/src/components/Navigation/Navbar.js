@@ -24,7 +24,7 @@ function Navbar({ isLoaded }){
   return (
     <ul>
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/home">Home</NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
