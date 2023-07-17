@@ -2,6 +2,8 @@
 
 EventGPT is a intelligent event recommendation system.
 
+_For a link to the live site, click here: [EventGPT](https://eventgpt-6bd7d46eb8b3.herokuapp.com/)._
+
 ## Development
 
 To start the dev server:
