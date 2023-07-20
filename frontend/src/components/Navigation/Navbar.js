@@ -14,17 +14,26 @@ function Navbar({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
+      <li className='session-links m-2'>
+        <NavLink
+          to="/login"
+          className='m-2'>Log In</NavLink>
+        <NavLink
+          to="/signup"
+          className='m-2'>Sign Up</NavLink>
+      </li>
     );
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/home">Home</NavLink>
+    <ul className='navbar'>
+      <li className='flex flex-row justify-between items-center'>
+        <NavLink
+          to="/home" className='m-4'>
+            <h2>
+              Home
+            </h2>
+        </NavLink>
         {isLoaded && sessionLinks}
       </li>
     </ul>
