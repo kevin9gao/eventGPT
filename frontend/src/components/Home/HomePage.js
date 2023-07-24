@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import EventsList from "./EventsList";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ export default function HomePage() {
   return (
     <>
       <div>
-        <h1>Home</h1>
+        <EventsList />
       </div>
     </>
   )
