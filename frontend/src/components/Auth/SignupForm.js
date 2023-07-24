@@ -30,6 +30,7 @@ function SignupForm() {
 
   return (
     <div className="login-wrapper">
+      <h2>Create your account</h2>
       <form
        className="signup-form"
        onSubmit={handleSubmit}>
