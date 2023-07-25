@@ -55,7 +55,7 @@ export default function ProfileButton({ user }) {
         </button>
         {showMenu && (
           <div
-            className="profile-dropdown border-slate-800 border-2 rounded shadow-md bg-gradient-to-br from-blue-600 from-30% to-red-600 to-70% hover:from-blue-500 hover:from-30% hover:to-red-500 hover:to-70%"
+            className="profile-dropdown border-slate-800 border-2 rounded shadow-md"
             ref={profMenu}>
             <p>
               <NavLink
