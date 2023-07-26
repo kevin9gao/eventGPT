@@ -1,0 +1,12 @@
+.events-list-wrapper {
+  width: 100%;
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.events-list-wrapper form input {
+  text-align: center;
+}
