@@ -16,9 +16,12 @@ module.exports = {
       description: {
         type: Sequelize.STRING(1000)
       },
-      date: {
+      startDate: {
         type: Sequelize.DATE,
         allowNull: false,
+      },
+      endDate: {
+        type: Sequelize.DATE,
       },
       location: {
         type: Sequelize.STRING(256),
@@ -28,13 +31,15 @@ module.exports = {
         type: Sequelize.STRING(50)
       },
       eventLink: {
-        type: Sequelize.STRING(1000)
+        type: Sequelize.STRING(1000),
+        allowNull: false,
+        unique: true,
       },
       size: {
         type: Sequelize.INTEGER
       },
-      price: {
-        type: Sequelize.DECIMAL(10, 2)
+      tickets: {
+        type: Sequelize.ARRAY(Sequelize.STRING)
       },
       coverImageUrl: {
         type: Sequelize.STRING(1000)

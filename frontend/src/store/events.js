@@ -25,8 +25,16 @@ const remove = eventId => ({
 });
 
 export const loadEvents = payload => async dispatch => {
-  const { location, date } = payload;
-  const res = await csrfFetch(`/api/events/${location}/${date}`);
+  const { type, location, startDate, endDate } = payload;
+  const res = await csrfFetch(`/api/events/${location}/${type}/${startDate}/${endDate}`);
+
+  console.log('loadEvents thunk payload', payload);
+
+  // if (res.ok) {
+  //   const list = await res.json();
+  //   dispatch(load(list));
+  //   return list;
+  // }
 }
 
 const initialState = {};

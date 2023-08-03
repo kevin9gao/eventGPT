@@ -5,7 +5,7 @@ import './Home.css';
 
 export default function EventsList() {
   const dispatch = useDispatch();
-  const [eventType, setEventType] = useState('');
+  const [type, setType] = useState('');
   const [location, setLocation] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -14,6 +14,7 @@ export default function EventsList() {
     e.preventDefault();
 
     const payload = {
+      type,
       location,
       startDate,
       endDate,
@@ -34,8 +35,8 @@ export default function EventsList() {
         <input
           type="text"
           placeholder="(type of event)"
-          value={eventType}
-          onChange={e => setEventType(e.target.value)}
+          value={type}
+          onChange={e => setType(e.target.value)}
         />
         <label>events in</label>
         <input
