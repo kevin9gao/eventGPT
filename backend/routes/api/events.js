@@ -153,8 +153,10 @@ router.get('/:location/:type/:startDate/:endDate', asyncHandler(async (req, res)
       const eventLink = events[index].link;
       const repeatEvent = await Event.findOne({ where: { eventLink }});
 
-      if (repeatEvent) continue;
-      else {
+      if (repeatEvent) {
+        resArray.push(repeatEvent);
+        continue
+      } else {
         const dbEvent = await Event.create({
           name: events[index].title,
           description: events[index].description,
@@ -168,36 +170,10 @@ router.get('/:location/:type/:startDate/:endDate', asyncHandler(async (req, res)
 
         resArray.push(dbEvent);
       }
-      console.log('resArray', resArray);
+      // console.log('resArray', resArray);
     }
+    return res.json(resArray);
   });
-
-
-  // const eventResults = searchResponse;
-  // console.log('eventResults -------', eventResults)
-  // for (event in eventResults) {
-  //   // const dbEvent = await db.Event.create({
-  //   //   name: `${event.title} at ${event.venue}`,
-  //   //   description: event.description,
-  //   //   date: event.date,
-  //   //   location: event.address,
-  //   //   eventLink: event.link,
-  //   //   price: event.ticket_info,
-  //   //   coverImageUrl: event.image,
-  //   // })
-  //   const dbEntry = {
-  //     name: `${event.title} at ${event.venue}`,
-  //     description: event.description,
-  //     date: event.date,
-  //     location: event.address,
-  //     eventLink: event.link,
-  //     price: event.ticket_info,
-  //     coverImageUrl: event.image,
-  //   }
-  //   console.log('dbEntry', dbEntry)
-  // }
-
-  // return searchResponse.event_results;
 }))
 
 module.exports = router;

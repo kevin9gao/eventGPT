@@ -12,6 +12,7 @@
   background-color: rgba(13, 19, 15, 0.842);
   color: white;
   box-shadow: 0 0 10px 2px black;
+  position: fixed;
 }
 
 .navbar > li {
