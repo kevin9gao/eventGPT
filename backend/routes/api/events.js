@@ -63,9 +63,9 @@ router.get('/:location/:type/:startDate/:endDate', asyncHandler(async (req, res)
             let endingDate = dateStrSplit[1];
             let month = startingDate.slice(0, 4);
             startDate = new Date(year + startingDate);
-            console.log('NO MONTH STRING', year + month + endingDate)
+            // console.log('NO MONTH STRING', year + month + endingDate)
             endDate = endingDate.match(/[A-Z]/) ?
-                      new Date(year + endingDate) : // ending date has month (Aug 12)
+                      new Date(year + endingDate.slice(5)) : // ending date has month (Aug 12)
                       new Date(year + month + endingDate); // no month (12)
           } else {
             //times provided
@@ -162,7 +162,7 @@ router.get('/:location/:type/:startDate/:endDate', asyncHandler(async (req, res)
           description: events[index].description,
           startDate,
           endDate,
-          location: `${events[index].address[0] + events[index].address[1]}`,
+          location: `${events[index].address[0] + ', ' + events[index].address[1]}`,
           eventLink: events[index].link,
           tickets: ticketInfo,
           coverImageUrl: events[index].image,
@@ -170,7 +170,6 @@ router.get('/:location/:type/:startDate/:endDate', asyncHandler(async (req, res)
 
         resArray.push(dbEvent);
       }
-      // console.log('resArray', resArray);
     }
     return res.json(resArray);
   });
