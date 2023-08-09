@@ -2,78 +2,29 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchEvents } from "../../store/events";
 import './Home.css';
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 export default function EventsList() {
   const dispatch = useDispatch();
-  const [type, setType] = useState('');
-  const [location, setLocation] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
   const [events, setEvents] = useState([]);
+  const { type, location, startDate, endDate } = useParams();
 
   useEffect(() => {
-    // console.log('EventsList events', events);
-  }, [events]);
+    (async function populateList() {
+      const payload = {
+        type,
+        location,
+        startDate,
+        endDate,
+      };
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-
-    const payload = {
-      type,
-      location,
-      startDate,
-      endDate,
-    };
-
-    const eventsQuery = await dispatch(searchEvents(payload));
-    setEvents(eventsQuery);
-  }
+      const eventsQuery = await dispatch(searchEvents(payload));
+      setEvents(eventsQuery);
+    })();
+  }, []);
 
   return (
     <div className="events-list-wrapper">
-      <div className="event-search">
-        <h2 className="m-2">
-          What type of events are you looking for and where?
-        </h2>
-        <form
-          className="flex justify-center"
-          onSubmit={handleSubmit}>
-          <label>Show me</label>
-          <input
-            type="text"
-            placeholder="(type of event)"
-            value={type}
-            onChange={e => setType(e.target.value)}
-          />
-          <label>events in</label>
-          <input
-            type="text"
-            placeholder="(location)"
-            value={location}
-            onChange={e => setLocation(e.target.value)}
-          />
-          <label>during</label>
-          <input
-            type="text"
-            placeholder="start date"
-            onFocus={e => e.target.type = 'date'}
-            onBlur={e => e.target.type = 'text'}
-            value={startDate}
-            onChange={e => setStartDate(e.target.value)}
-          />
-          <label>to</label>
-          <input
-            type="text"
-            placeholder="end date"
-            onFocus={e => e.target.type = 'date'}
-            onBlur={e => e.target.type = 'text'}
-            value={endDate}
-            onChange={e => setEndDate(e.target.value)}
-          />
-          <button>Search</button>
-        </form>
-      </div>
       <div className="event-results">
         {!!events.length && events.map(event => (
           <NavLink
@@ -86,7 +37,7 @@ export default function EventsList() {
               <div className="card-content">
                 <h4 className="event-name">{event.name}</h4>
                 <p className="location">{event.location}</p>
-                <p className="date">{event.startDate}</p>
+                <p className="date">{new Date(event.startDate).toString()}</p>
               </div>
             </article>
           </NavLink>

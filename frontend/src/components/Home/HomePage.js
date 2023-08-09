@@ -10,8 +10,8 @@ export default function HomePage() {
   if (!sessionUser) navigate('/');
   return (
     <>
-      <div>
-        <EventsList />
+      <div className="flex justify-center items-center">
+        <h1>Home</h1>
       </div>
     </>
   )

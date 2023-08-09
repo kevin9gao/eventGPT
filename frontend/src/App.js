@@ -9,6 +9,8 @@ import Navbar from './components/Navigation/Navbar';
 import SplashPage from './components/SplashPage';
 import HomePage from './components/Home/HomePage';
 import Event from './components/Event/Event';
+import Search from './components/Home/Search';
+import EventsList from './components/Home/EventsList';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,13 @@ function App() {
           <Route path='/login' element={<LoginForm />} />
           <Route path='/signup' element={<SignupForm />} />
           <Route path='/home' element={<HomePage />} />
+          <Route path='/search/:type/:location/:startDate/:endDate' element={
+            <>
+              <Search />
+              <EventsList />
+            </>
+          } />
+          <Route path='/search' element={<Search />} />
           <Route path='/events/:eventId' element={<Event />} />
           <Route path='/' element={<SplashPage />} />
         </Routes>
