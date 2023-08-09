@@ -29,12 +29,20 @@ function Navbar({ isLoaded }){
     <>
       <ul className='navbar'>
         <li className='flex flex-row justify-between items-center'>
-          <NavLink
-            to="/home" className='m-4'>
-              <h2>
-                Home
-              </h2>
-          </NavLink>
+          <div className='flex flex-row justify-start items-center'>
+            <NavLink
+              to="/home" className='m-4'>
+                <h2>
+                  Home
+                </h2>
+            </NavLink>
+            <NavLink
+              to="/search" className='m-2'>
+                <h3>
+                  Search Events
+                </h3>
+            </NavLink>
+          </div>
           {isLoaded && sessionLinks}
         </li>
       </ul>
