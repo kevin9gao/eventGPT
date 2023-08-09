@@ -26,17 +26,19 @@ function Navbar({ isLoaded }){
   }
 
   return (
-    <ul className='navbar'>
-      <li className='flex flex-row justify-between items-center'>
-        <NavLink
-          to="/home" className='m-4'>
-            <h2>
-              Home
-            </h2>
-        </NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
+    <>
+      <ul className='navbar'>
+        <li className='flex flex-row justify-between items-center'>
+          <NavLink
+            to="/home" className='m-4'>
+              <h2>
+                Home
+              </h2>
+          </NavLink>
+          {isLoaded && sessionLinks}
+        </li>
+      </ul>
+    </>
   );
 }
 

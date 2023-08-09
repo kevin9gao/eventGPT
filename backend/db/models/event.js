@@ -27,9 +27,12 @@ module.exports = (sequelize, DataTypes) => {
         len: [0, 1000]
       }
     },
-    date: {
+    startDate: {
       type: DataTypes.DATE,
       allowNull: false,
+    },
+    endDate: {
+      type: DataTypes.DATE,
     },
     location: {
       type: DataTypes.STRING,
@@ -46,15 +49,17 @@ module.exports = (sequelize, DataTypes) => {
     },
     eventLink: {
       type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
       validate: {
-        len: [0, 1000]
+        len: [1, 1000]
       }
     },
     size: {
       type: DataTypes.INTEGER,
     },
-    price: {
-      type: DataTypes.DECIMAL(10, 2),
+    tickets: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
     coverImageUrl: {
       type: DataTypes.STRING,

@@ -8,6 +8,7 @@ import SignupForm from './components/Auth/SignupForm';
 import Navbar from './components/Navigation/Navbar';
 import SplashPage from './components/SplashPage';
 import HomePage from './components/Home/HomePage';
+import Event from './components/Event/Event';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,11 +21,13 @@ function App() {
   return (
     <>
       <Navbar isLoaded={isLoaded} />
+      <div id='navbar-offset'></div>
       {isLoaded && (
         <Routes>
           <Route path='/login' element={<LoginForm />} />
           <Route path='/signup' element={<SignupForm />} />
           <Route path='/home' element={<HomePage />} />
+          <Route path='/events/:eventId' element={<Event />} />
           <Route path='/' element={<SplashPage />} />
         </Routes>
       )}
