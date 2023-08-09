@@ -1,0 +1,27 @@
+.event-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1em;
+}
+
+.event-page-wrapper img {
+  width: 20vw;
+  margin: 1em 0;
+}
+
+.event-page-wrapper .event {
+  width: 75vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.event .startdate {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  margin: 1em 0;
+}

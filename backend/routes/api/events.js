@@ -12,6 +12,12 @@ const search = new SerpApi.GoogleSearch(process.env.SERPAPI_TOKEN);
 
 const router = express.Router();
 
+// fetch all events
+router.get('/', asyncHandler(async (req, res) => {
+  const events = await Event.findAll();
+  return res.json(events);
+}))
+
 // fetch events from a location
 router.get('/:location/:type/:startDate/:endDate', asyncHandler(async (req, res) => {
   const { location, type, startDate, endDate } = req.params;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { loadEvents } from "../../store/events";
+import { searchEvents } from "../../store/events";
 import './Home.css';
 import { NavLink } from "react-router-dom";
 
@@ -13,7 +13,7 @@ export default function EventsList() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    console.log('EventsList events', events);
+    // console.log('EventsList events', events);
   }, [events]);
 
   const handleSubmit = async e => {
@@ -26,7 +26,7 @@ export default function EventsList() {
       endDate,
     };
 
-    const eventsQuery = await dispatch(loadEvents(payload));
+    const eventsQuery = await dispatch(searchEvents(payload));
     setEvents(eventsQuery);
   }
 
