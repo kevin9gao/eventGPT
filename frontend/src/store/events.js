@@ -1,11 +1,17 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD = 'events/LOAD';
+const SEARCH = 'events/SEARCH';
 const ADD_EDIT = 'events/ADD_EDIT';
 const REMOVE = 'events/REMOVE';
 
 const load = list => ({
   type: LOAD,
+  list
+});
+
+const search = list => ({
+  type: SEARCH,
   list
 });
 
@@ -24,7 +30,7 @@ const remove = eventId => ({
   eventId
 });
 
-export const loadEvents = payload => async dispatch => {
+export const searchEvents = payload => async dispatch => {
   const { type, location, startDate, endDate } = payload;
   const res = await csrfFetch(`/api/events/${location}/${type}/${startDate}/${endDate}`);
 
@@ -32,8 +38,18 @@ export const loadEvents = payload => async dispatch => {
 
   if (res.ok) {
     const list = await res.json();
+    dispatch(search(list));
+    // console.log('loadEvents thunk list', list)
+    return list;
+  }
+}
+
+export const loadEvents = () => async dispatch => {
+  const res = await csrfFetch('/api/events/');
+
+  if (res.ok) {
+    const list = await res.json();
     dispatch(load(list));
-    console.log('loadEvents thunk list', list)
     return list;
   }
 }
@@ -45,6 +61,12 @@ const eventsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD:
       newState = { ...state };
+      action.list.forEach(event => {
+        newState[event.id] = event;
+      });
+      return newState;
+    case SEARCH:
+      newState = {};
       const events = action.list;
       events.forEach(event => {
         newState[event.id] = event;
