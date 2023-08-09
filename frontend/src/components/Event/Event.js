@@ -30,6 +30,16 @@ export default function Event() {
         <div className="startdate">
           <h4>{new Date(event?.startDate).toString()}</h4>
         </div>
+
+        <h3>{event?.location}</h3>
+
+        <div className="eventlink">
+          <a href={event?.eventLink} 
+          target="_blank">Eventbrite Link</a>
+        </div>
+
+
+      
       </div>
     </div>
   );
