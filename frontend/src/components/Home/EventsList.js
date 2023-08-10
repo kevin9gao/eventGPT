@@ -21,6 +21,8 @@ export default function EventsList() {
       const eventsQuery = await dispatch(searchEvents(payload));
       setEvents(eventsQuery);
     })();
+
+    console.log('EventsList events', events)
   }, []);
 
   return (
