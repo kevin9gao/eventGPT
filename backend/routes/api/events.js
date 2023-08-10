@@ -39,7 +39,7 @@ router.get('/:location/:type/:startDate/:endDate', asyncHandler(async (req, res)
     // grab the events key in the json result
     const events = data.events_results;
     for (const index in events) {
-      console.log('EVENT: ', events[index])
+      // console.log('EVENT: ', events[index])
       // format the date string into a format that the database accepts
       let dateStr = events[index].date.when;
       const year = new Date().getFullYear().toString();
@@ -142,18 +142,18 @@ router.get('/:location/:type/:startDate/:endDate', asyncHandler(async (req, res)
       const ticketInfo = events[index].ticket_info.map(ticket => ticket.link);
       // console.log('ticket info', ticketInfo)
 
-      const dbEntry = {
-        name: events[index].title,
-        description: events[index].description,
-        startDate,
-        endDate,
-        location: `${events[index].address[0] + ', ' + events[index].address[1]}`,
-        eventLink: events[index].link,
-        tickets: ticketInfo,
-        coverImageUrl: events[index].image,
-      };
+      // const dbEntry = {
+      //   name: events[index].title,
+      //   description: events[index].description,
+      //   startDate,
+      //   endDate,
+      //   location: `${events[index].address[0] + ', ' + events[index].address[1]}`,
+      //   eventLink: events[index].link,
+      //   tickets: ticketInfo,
+      //   coverImageUrl: events[index].image,
+      // };
 
-      console.log('dbEntry', dbEntry)
+      // console.log('dbEntry', dbEntry)
 
       // check if event is already in database
       const eventLink = events[index].link;
