@@ -22,7 +22,7 @@ export default function EventsList() {
       setEvents(eventsQuery);
     })();
 
-    console.log('EventsList events', events)
+    // console.log('EventsList events', events)
   }, []);
 
   return (

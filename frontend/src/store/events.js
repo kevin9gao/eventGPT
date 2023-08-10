@@ -34,12 +34,12 @@ export const searchEvents = payload => async dispatch => {
   const { type, location, startDate, endDate } = payload;
   const res = await csrfFetch(`/api/events/${location}/${type}/${startDate}/${endDate}`);
 
-  console.log('loadEvents thunk payload', payload);
+  // console.log('loadEvents thunk payload', payload);
 
   if (res.ok) {
     const list = await res.json();
     dispatch(search(list));
-    console.log('loadEvents thunk list', list)
+    // console.log('loadEvents thunk list', list)
     return list;
   }
 }
