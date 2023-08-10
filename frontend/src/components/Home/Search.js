@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Home.css';
 import { useNavigate } from "react-router-dom";
 
@@ -8,9 +8,38 @@ export default function Search() {
   const [location, setLocation] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
+  const [validationErrors, setValidationErrors] = useState([]);
+  const [hideErrors, setHideErrors] = useState(true);
+
+  useEffect(() => {
+    const errors = [];
+
+    if (!type) {
+      errors.push('Please specify what type of event you are looking for.');
+    }
+
+    if (!location) {
+      errors.push('Please specify where you would like to search for events.');
+    }
+
+    if (!startDate) {
+      errors.push('Please specify a starting date for your event search.');
+    }
+
+    if (!endDate) {
+      errors.push('Please specify an ending date for your event search.');
+    }
+
+    setValidationErrors(errors);
+  }, [type, location, startDate, endDate]);
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (validationErrors.length) {
+      setHideErrors(false);
+      return;
+    }
 
     navigate(`/search/${type}/${location}/${startDate}/${endDate}`);
   }
@@ -21,6 +50,15 @@ export default function Search() {
         <h2 className="m-2">
           What type of events are you looking for and where?
         </h2>
+        <div className="errors" hidden={hideErrors}>
+          <ul>
+            {validationErrors?.map((error, idx) => (
+              <li key={idx}>
+                {error}
+              </li>
+            ))}
+          </ul>
+        </div>
         <form
           className="flex justify-center"
           onSubmit={handleSubmit}>

@@ -16,6 +16,23 @@
   justify-content: center;
   align-items: center;
 }
+.event-search h2 {
+  margin: 1em 0;
+}
+.event-search form {
+  margin: 1em 0;
+}
+
+.errors {
+  color: rgba(223, 45, 45, 0.733);
+  margin: .2em 0 1em 0;
+}
+.errors ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
 
 .event-results {
   width: 100%;
