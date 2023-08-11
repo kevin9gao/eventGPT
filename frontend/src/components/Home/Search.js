@@ -10,6 +10,8 @@ export default function Search() {
   const [endDate, setEndDate] = useState('');
   const [validationErrors, setValidationErrors] = useState([]);
   const [hideErrors, setHideErrors] = useState(true);
+  const [tooltip, setTooltip] = useState([]);
+  const [hideTips, setHideTips] = useState(true);
 
   useEffect(() => {
     const errors = [];
@@ -31,6 +33,29 @@ export default function Search() {
     }
 
     setValidationErrors(errors);
+
+    const tips = [];
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth();
+    const day = today.getDate();
+
+    if (new Date(startDate) < new Date(`${year}-${(month+1).toString().padStart(2, '0')}-${day}`)) {
+      tips.push('*You have entered a starting date that is before today. Past events will not be shown in search results.')
+    }
+
+    setTooltip(tips);
+
+    // console.log('tooltip', tooltip)
+    // console.log('startDate', startDate)
+    // console.log('new Date(startDate)', new Date(startDate))
+    // console.log('`${year}-${month}-${day}`', `${year}-${(month+1).toString().padStart(2, '0')}-${day}`)
+    // console.log('new Date()', new Date(`${year}-${(month+1).toString().padStart(2, '0')}-${day}`))
+
+    if (tooltip.length) {
+      setHideTips(false);
+    }
   }, [type, location, startDate, endDate]);
 
   const handleSubmit = e => {
@@ -96,6 +121,15 @@ export default function Search() {
           />
           <button>Search</button>
         </form>
+        <div className="tooltip" hidden={hideTips}>
+          <ul>
+            {tooltip?.map((tip, idx) => (
+              <li key={idx}>
+                {tip}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
