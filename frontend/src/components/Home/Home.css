@@ -4,6 +4,11 @@
   display: block;
 }
 
+.events-query-header {
+  display: flex;
+  justify-content: center;
+}
+
 .search-wrapper form input {
   text-align: center;
   width: 11em;
