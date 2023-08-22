@@ -36,5 +36,8 @@
 .eventlink a {
   text-decoration: underline;
   color: blue;
-  background-color: grey;
+}
+
+.event .tickets {
+  
 }

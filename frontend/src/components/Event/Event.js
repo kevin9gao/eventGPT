@@ -35,10 +35,15 @@ export default function Event() {
 
         <div className="eventlink">
           <a href={event?.eventLink} 
-          target="_blank">Eventbrite Link</a>
+          target="_blank">Event Link</a>
         </div>
 
-
+        <div className="tickets">
+          {event.tickets.map(link => (
+            <a href={link}
+              target="_blank">link</a>
+          ))}
+        </div>
       
       </div>
     </div>
