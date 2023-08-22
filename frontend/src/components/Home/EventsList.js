@@ -27,6 +27,14 @@ export default function EventsList() {
 
   return (
     <div className="events-list-wrapper">
+      <div className="events-query-header">
+        <h3>
+          {`Showing ${type[0].toUpperCase() + type.slice(1)} events in
+            ${location[0].toUpperCase() + location.slice(1)} from
+            ${(new Date(startDate)).toDateString()} to
+            ${(new Date(endDate)).toDateString()}`}
+        </h3>
+      </div>
       <div className="event-results">
         {!!events.length && events.map(event => (
           <NavLink

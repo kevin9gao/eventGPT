@@ -34,17 +34,20 @@ export default function Event() {
         <h3>{event?.location}</h3>
 
         <div className="eventlink">
-          <a href={event?.eventLink} 
+          <a href={event?.eventLink}
           target="_blank">Event Link</a>
         </div>
 
+        <div className="flex justify-start ticket-header">
+          <h3>Tickets</h3>
+        </div>
         <div className="tickets">
           {event.tickets.map(link => (
             <a href={link}
-              target="_blank">link</a>
+              target="_blank">{link.split('/')[2]}</a>
           ))}
         </div>
-      
+
       </div>
     </div>
   );
